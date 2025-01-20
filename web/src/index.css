@@ -1,0 +1,10 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+  background-color: #cbd5e1; /* bg-slate-300 */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
