@@ -1,3 +1,4 @@
+require("dotenv").config();
 /**
  * Import function triggers from their respective submodules:
  *
@@ -38,16 +39,16 @@ exports.setupUser = onCall(async (data) => {
     const response = await axios.post(
       url,
       {
-        client_id: 107682, // hide
-        client_secret: "ef4c130aeb3b93cc7e4e9a2b312949d61b8a6b53", // hide
-        code: code,
+        client_id: process.env.STRAVA_CLIENT_ID,
+        client_secret: process.env.STRAVA_CLIENT_SECRET,
+        code,
         grant_type: "authorization_code",
       },
       {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
     const { data } = response;
     logger.log(">>>data", response);
@@ -81,8 +82,8 @@ exports.refreshToken = onRequest(async (req, res) => {
         "Content-Type": "application/json",
       },
       params: {
-        client_id: 107682, // hide
-        client_secret: "ef4c130aeb3b93cc7e4e9a2b312949d61b8a6b53", // hide
+        client_id: process.env.STRAVA_CLIENT_ID,
+        client_secret: process.env.STRAVA_CLIENT_SECRET,
         refresh_token,
         grant_type: "refresh_token",
       },
